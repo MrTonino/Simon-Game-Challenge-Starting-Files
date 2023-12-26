@@ -1,10 +1,10 @@
 // document.addEventListener("click", function () {
 //   alert("WELCOME SIR !");
 // });
+userClickedPattern = [];
 gamePattern = [];
 var bottomColours = ["red", "blue", "yellow", "green"];
 function nextSequence() {
-  console.log("Next Sequence Called");
   var randomNumber = Math.floor(Math.random() * 4);
   var randomChosenColour = bottomColours[randomNumber];
   gamePattern.push(randomChosenColour);
@@ -21,5 +21,10 @@ function playSound(colour) {
 }
 $("#level-title").click(function () {
   nextSequence();
+});
+$(".red, .yellow, .blue, .green").on("click", function () {
+  var userChosenColour = $(this).attr("id");
+  userClickedPattern.push(userChosenColour);
+  console.log(userClickedPattern);
 });
 nextSequence();
